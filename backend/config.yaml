@@ -1,0 +1,15 @@
+DATABASE:
+  HOST: "localhost"
+  PORT: "5432"
+  USER: "postgres"
+PORT:
+  AUTH: "3475"
+MAIL:
+  HOST: "smtp.cc.iitk.ac.in"
+  PORT: "25"
+DBNAME:
+  AUTH: "authentication"
+  APPOINTMENT: "appointment"
+OTP:
+  EXPIRATION: 20
+  SIZE: 6
