@@ -3,22 +3,21 @@ package main
 import (
 	"net/http"
 
-	"github.com/bmerchant22/hc_hackathon/auth"
+	"github.com/bmerchant22/hc_hackathon/appointment"
 	_ "github.com/bmerchant22/hc_hackathon/config"
-	"github.com/bmerchant22/hc_hackathon/mail"
 	"github.com/bmerchant22/hc_hackathon/middleware"
 	"github.com/gin-gonic/gin"
 	"github.com/spf13/viper"
 )
 
-func authServer(mail_channel chan mail.Mail) *http.Server {
-	PORT := viper.GetString("PORT.AUTH")
+func appointmentServer() *http.Server {
+	PORT := viper.GetString("PORT.APPOINTMENT")
 	r := gin.New()
 	r.Use(middleware.CORS())
 	r.Use(gin.Recovery())
 	r.Use(gin.Logger())
 
-	auth.Router(mail_channel, r)
+	appointment.Router(r)
 
 	server := &http.Server{
 		Addr:         ":" + PORT,

@@ -13,7 +13,7 @@ const (
 	readTimeout  = 5 * time.Second
 	writeTimeout = 10 * time.Second
 )
-	
+
 func main() {
 	var g errgroup.Group
 	mail_channel := make(chan mail.Mail)
@@ -24,6 +24,10 @@ func main() {
 
 	g.Go(func() error {
 		return authServer(mail_channel).ListenAndServe()
+	})
+
+	g.Go(func() error {
+		return appointmentServer().ListenAndServe()
 	})
 
 	log.Println("Auth server started")

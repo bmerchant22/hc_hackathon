@@ -19,7 +19,7 @@ func openConnection() {
 	password := viper.GetString("DATABASE.PASSWORD")
 
 	dbName := viper.GetString("DBNAME.APPOINTMENT")
-	user := dbName + viper.GetString("DATABASE.USER")
+	user := viper.GetString("DATABASE.USER")
 
 	dsn := "host=" + host + " user=" + user + " password=" + password
 	dsn += " dbname=" + dbName + " port=" + port + " sslmode=disable TimeZone=Asia/Kolkata"
