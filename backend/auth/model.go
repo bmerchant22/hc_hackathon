@@ -11,13 +11,13 @@ import (
 
 type User struct {
 	gorm.Model
-	UserID     string         `gorm:"uniqueIndex" json:"user_id"` // roll or PF number
-	Username   string         `json:"username"`
-	Password   string         `json:"password"`
-	RoleID     constants.Role `json:"role_id" gorm:"default:1"` // student role by default
-	ExpiryDate time.Time      `json:"expiry_date"`
-	WSConnMux  sync.Mutex
-	WSConn     *websocket.Conn // WebSocket connection for the user
+	UserID     string          `gorm:"uniqueIndex" json:"user_id"` // roll or PF number
+	Username   string          `json:"username"`
+	Password   string          `json:"password"`
+	RoleID     constants.Role  `json:"role_id" gorm:"default:1"` // student role by default
+	ExpiryDate time.Time       `json:"expiry_date"`
+	WSConnMux  sync.Mutex      `gorm:"-"`
+	WSConn     *websocket.Conn `gorm:"-"` // WebSocket connection for the user
 }
 
 type OTP struct {
